@@ -4,7 +4,7 @@
       <div class="loader__inner">
         <div class="case loader__wrap">
           <div class="loader__picture">
-            LOADER
+           LOADER
           </div>
           <p class="loader__text">
             Подождите, <br />
@@ -13,6 +13,13 @@
         </div>
       </div>
     </div>
+    <template v-if="images != null">
+      <img
+          v-for="(img, index) in images"
+          :key="`image-${index}`"
+          class="loader__hide"
+          :src="img"
+      />
     </template>
   </div>
 </template>
@@ -35,6 +42,9 @@
       return {
         active: true,
       };
+    },
+    props: {
+      images: { type: Array, default: null },
     },
 
     mounted() {
