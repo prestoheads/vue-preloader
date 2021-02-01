@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-select v-model="selected" v-bind="config" />
+    <v-select />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   data: () => ({
     selected: null,
     config: {
-      options: countries
+      // options: countries
     }
   })
 };

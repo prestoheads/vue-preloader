@@ -1,6 +1,19 @@
 <template>
-  <div class="loader">
-    olololo
+  <div>
+    <div :class="{ active: !active }" class="loader">
+      <div class="loader__inner">
+        <div class="case loader__wrap">
+          <div class="loader__picture">
+            LOADER
+          </div>
+          <p class="loader__text">
+            Подождите, <br />
+            идёт загрузка...
+          </p>
+        </div>
+      </div>
+    </div>
+    </template>
   </div>
 </template>
 
@@ -20,14 +33,18 @@
 
     data() {
       return {
-      }
+        active: true,
+      };
     },
+
     mounted() {
-      console.log('olool');
-    },
-
-    methods: {
-
+      document.onreadystatechange = () => {
+        if (document.readyState == 'complete') {
+          this.$nextTick(() => {
+            this.active = false;
+          }, 1000);
+        }
+      };
     },
   }
 </script>
